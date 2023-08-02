@@ -1,0 +1,8 @@
+create table youtube_videos(
+    video_id varchar primary key,
+    title varchar,
+    views integer,
+    comments integer,
+    likes integer,
+    updated_at date
+);
