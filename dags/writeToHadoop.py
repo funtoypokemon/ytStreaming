@@ -50,4 +50,10 @@ writeToHDFS = SSHOperator(ssh_conn_id='tolocalhost',
 )
 
 
-sourceEnv >> [streamingConsumer, streamingProducer] >> writeToHDFS
+getDataToHive = SSHOperator(ssh_conn_id='tolocalhost',
+    task_id = "getDataToHive",
+    command = "/opt/hadoop/bin/hdfs dfs -copyToLocal hdfs://localhost:9001/pntloi/test/* /home/pntloi/Documents/wholetool/data/hive"                            ,
+    dag = dag_project
+)
+
+sourceEnv >> [streamingConsumer, streamingProducer] >> writeToHDFS >> getDataToHive

@@ -50,10 +50,16 @@ passwd: airflow
 
 create database hadoop_ytstreaming;
 show databases;
+show tables;
+
 use hadoop_ytstreaming;
 
 #Copy data to hive mounted dir
 hdfs dfs -copyToLocal hdfs://localhost:9001/pntloi/test/* /home/pntloi/Documents/wholetool/data/hive
 
+create external table ytstreaming_warehouse( video_id string, title string, views int, comments int, likes int, updated_at date) row format delimited fields terminated by ',' stored as textfile location '/opt/hive/data/warehouse';
 
+
+desc ytstreaming_warehouse;
+desc formatted ytstreaming_warehouse;
 

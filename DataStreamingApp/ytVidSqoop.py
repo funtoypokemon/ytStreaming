@@ -36,6 +36,7 @@ jdbcDF.printSchema()
 jdbcDF.show(truncate=False)
 
 
+# jdbcDF.write.mode("append").csv("hdfs://localhost:9001/pntloi/test")
 jdbcDF.write.partitionBy('updated_at').mode("append").csv("hdfs://localhost:9001/pntloi/test")
 
 

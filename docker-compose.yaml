@@ -240,6 +240,19 @@ services:
   #       - airflow-webserver
   #     restart: always
 
+
+  #################################################################################
+  #Grafana service
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+     - '3004:3000'
+    volumes:
+      - ./data/grafana:/opt/grafana
+
+
   #################################################################################
   #Airflow services
   airflow-webserver:
